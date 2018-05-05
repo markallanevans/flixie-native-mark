@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ImageBackground, FlatList } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, FlatList, ActivityIndicator, TouchableHighlight } from 'react-native';
 import MovieDetails from './MovieDetails'
 
 const styles = StyleSheet.create({
@@ -54,7 +54,8 @@ class MovieList extends Component {
       <View style={styles.main_view}>
         <FlatList
           data={this.props.screenProps.movieDBList}
-          renderItem={({item}) => 
+          renderItem={({item}) =>
+          <TouchableHighlight onPress={() => alert('Touched!')}>
             <View style={styles.container}>
               <Text style={styles.text} >{item.title}</Text>
               <ImageBackground style={styles.image} source={{ uri: 'https://image.tmdb.org/t/p/w500/' + item.poster_path }} >
@@ -63,9 +64,17 @@ class MovieList extends Component {
               <MovieDetails movie={item}/>
               </ImageBackground>
             </View>
+          </TouchableHighlight>
           }
           keyExtractor={(item) => `${item.id}`}
-          onEndReached={this.fetchNextPage}
+          refreshing={this.props.screenProps.isLoading}
+          onRefresh={this.props.screenProps.fetchNextPage}
+          onEndReachedThreshold={0.05}
+          onEndReached={this.props.screenProps.fetchNextPage}
+          ListFooterComponent={() =>
+            <View>
+              <ActivityIndicator size="large" />
+            </View>}
         />
       </View>
     );

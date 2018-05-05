@@ -5,7 +5,11 @@ import { StackNavigator } from 'react-navigation';
 import MovieList from './components/MovieList';
 
 const Routes = StackNavigator({
-  MovieList: { screen: MovieList }
+  MovieList: { screen: MovieList,
+  navigationOptions: {
+    title: 'Welcome to Flixie',
+    } 
+  }
 })
 
 const movieDBSource = "https://api.themoviedb.org/";
@@ -65,7 +69,9 @@ export default class FetchExample extends React.Component {
         screenProps={{
           movieDBList: this.state.movieDBList,
           page: this.state.page,
-          isLoading: this.state.isLoading
+          isLoading: this.state.isLoading,
+          fetchNextPage: this.fetchNextPage,
+          refreshing: this.state.isLoading,
          }} />
     );
   }
