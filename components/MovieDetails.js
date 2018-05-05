@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     opacity: 0.9,
     padding: 20,
     textAlign: 'justify',
+    justifyContent: 'flex-end',
   }
 });
 

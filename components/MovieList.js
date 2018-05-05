@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
   },
   image: {
     alignSelf: 'center',
-    width: 325,
-    height: 450,
+    width: 300,
+    height: 400,
   },
   text: {
     fontSize: 30,
@@ -61,8 +61,8 @@ class MovieList extends Component {
               <ImageBackground style={styles.image} source={{ uri: 'https://image.tmdb.org/t/p/w500/' + item.poster_path }} >
               <Text style={styles.release_date} >{item.release_date}</Text>
               <Text style={styles.vote_average} >{item.vote_average.toFixed(1)}</Text>
-              <MovieDetails movie={item}/>
               </ImageBackground>
+              <MovieDetails movie={item}/>
             </View>
           </TouchableHighlight>
           }

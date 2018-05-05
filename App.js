@@ -9,7 +9,8 @@ const Routes = StackNavigator({
   navigationOptions: {
     title: 'Welcome to Flixie',
     } 
-  }
+  },
+  MovieOverview: { screen: MovieDetails },
 })
 
 const movieDBSource = "https://api.themoviedb.org/";
