@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
-  overview: {
+  details: {
     backgroundColor: '#000',
     color: '#fff',
     opacity: 0.9,
@@ -18,9 +19,10 @@ class MovieDetails extends Component {
   }
 
   render() {
+    console.log(this.props.item.overview);
     return (
       <View>
-        <Text style={styles.overview} >{this.props.movie.overview}</Text>
+        <Text style={styles.details}>{this.props.item.overview}</Text>
       </View>
     );
   }
@@ -28,4 +30,7 @@ class MovieDetails extends Component {
 
 export default MovieDetails;
 
-// Add Proptypes...
+MovieDetails.propTypes = {
+  item: PropTypes.object,
+  overview: PropTypes.string,
+}

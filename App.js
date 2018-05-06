@@ -4,14 +4,19 @@ import MovieDetails from './components/MovieDetails';
 import { StackNavigator } from 'react-navigation';
 import MovieList from './components/MovieList';
 
-const Routes = StackNavigator({
-  MovieList: { screen: MovieList,
-  navigationOptions: {
-    title: 'Welcome to Flixie',
-    } 
+const Routes = StackNavigator(
+  {
+    MovieList: { screen: MovieList,
+    navigationOptions: {
+      title: 'Welcome to Flixie',
+      } 
+    },
+    MovieDetails: { screen: MovieDetails },
   },
-  MovieOverview: { screen: MovieDetails },
-})
+  // { 
+  //     initialRouteName: 'MovieList'
+  // }
+);
 
 const movieDBSource = "https://api.themoviedb.org/";
 const movieCollectionCall = "3/movie/popular?";
