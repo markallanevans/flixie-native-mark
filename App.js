@@ -36,10 +36,12 @@ export default class FetchExample extends React.Component {
     this.state ={ 
     isLoading: true,
     movieDBList: [],
+    filteredMovies: [],
     page: 1,
     }
 
     this.fetchNextPage = this.fetchNextPage.bind(this);
+    this.filterMovies = this.filterMovies.bind(this);
   }
 
   componentDidMount(){
@@ -58,12 +60,25 @@ export default class FetchExample extends React.Component {
       this.setState({
         isLoading: false,
         movieDBList: newResults,
+        filteredMovies: newResults,
         page: this.state.page + 1
       });
     } catch(error) {
       alert('Your network has more bugs than a geckos!');
     }
   }
+
+  filterMovies(text) {
+    let filterText = text;
+    const allMovies = this.state.movieDBList;
+    const filteredMovies = allMovies.filter(
+        m => m.title.toLowerCase().indexOf(filterText.toLowerCase()) !== -1
+  )
+  this.setState({
+    filteredMovies: filteredMovies,
+    searchText: text,
+  })
+}
 
   render(){
 
@@ -78,7 +93,10 @@ export default class FetchExample extends React.Component {
     return(
       <Routes 
         screenProps={{
+          screenProps: this.state.searchText,
           movieDBList: this.state.movieDBList,
+          filteredMovies: this.state.filteredMovies,
+          filterMovies: this.filterMovies,
           page: this.state.page,
           isLoading: this.state.isLoading,
           fetchNextPage: this.fetchNextPage,

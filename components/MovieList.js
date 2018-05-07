@@ -9,26 +9,19 @@ class MovieList extends Component {
     super(props);
     this.state = {
       searchText: '',
+      search: false,
       allMovies: this.props.screenProps.movieDBList,
       movieList: this.props.screenProps.movieDBList,
     }
     this.setSearchText = this.setSearchText.bind(this);
-    this.filterMovies = this.filterMovies.bind(this);
   }
-  
-  filterMovies(text) {
-      let filterText = text;
-      const allMovies = this.state.allMovies;
-      const filteredMovies = allMovies.filter(
-          m => m.title.toLowerCase().indexOf(filterText.toLowerCase()) !== -1
-    )
-    this.setState({
-      movieList: filteredMovies
-    })
-  }
-  
+
   setSearchText(text) {
-    this.filterMovies(text);
+    this.props.screenProps.filterMovies(text);
+    this.setState({
+      searchText: text,
+      search: text.length > 0 ? true : false,
+    });
   }
 
 
@@ -39,10 +32,11 @@ class MovieList extends Component {
       <View>
         <SearchBar 
           data={screenProps.movieDBList}
+          searchText={screenProps.searchText}
           setSearchText={this.setSearchText}
         />
         <FlatList
-          data={this.state.movieList}
+          data={screenProps.filteredMovies}
           renderItem={({item}) =>
           <MovieCard 
             item={item} 
@@ -54,8 +48,8 @@ class MovieList extends Component {
           refreshing={screenProps.isLoading}
           onRefresh={screenProps.fetchNextPage}
           onEndReachedThreshold={0.05}
-          onEndReached={screenProps.fetchNextPage}
-          ListFooterComponent={() =>
+          onEndReached={!this.state.search && screenProps.fetchNextPage}
+          ListFooterComponent={() => this.state.searchText === '' && 
             <View>
               <ActivityIndicator size="large" />
             </View>}
@@ -66,5 +60,3 @@ class MovieList extends Component {
 }
 
 export default MovieList;
-
-// Add Proptypes...

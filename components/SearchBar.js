@@ -12,15 +12,9 @@ const styles = StyleSheet.create( {
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   searchText: '',
-    // };
-    // this.setSearchText = this.setSearchText.bind(this);
   }
 
   render() {
-    // const screenProps = this.props.screenProps;
-    // const navigate = this.props.navigation.navigate;
     return (
       <View>
        <TextInput
@@ -34,5 +28,3 @@ class SearchBar extends Component {
 }
 
 export default SearchBar;
-
-// Add Proptypes...
