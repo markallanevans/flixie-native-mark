@@ -1,8 +1,8 @@
-# Project 1 - *Name of App Here*
+# Project 1 - *Flixie Native*
 
-**Name of your app** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
+**Flixie-Native** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **X** hours spent in total
+Time spent: **4** hours spent in total
 
 ## User Stories
 
@@ -30,17 +30,15 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+<img src='http://www.giphy.com/gifs/C8YUQfDLcG1908Ypj7' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+The main challenges were adjusting to how React-Native works as compared to React.js, as well as getting accustomed to styling components. Currently I'm working on the search bar and the code for this can be seen in the master branch of the github repo. 
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2018] [Mark Evans]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
