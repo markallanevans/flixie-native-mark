@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground, FlatList, ActivityIndicator, TouchableHighlight } from 'react-native';
 import MovieDetails from './MovieDetails';
 import MovieCard from './MovieCard';
-import SearchBar from './SearchBar';
 
 class MovieList extends Component {
   constructor(props) {
@@ -14,7 +13,6 @@ class MovieList extends Component {
     const navigate = this.props.navigation.navigate;
     return (
       <View>
-        <SearchBar data={screenProps.movieDBList} />
         <FlatList
           data={screenProps.movieDBList}
           renderItem={({item}) =>
@@ -41,4 +39,3 @@ class MovieList extends Component {
 
 export default MovieList;
 
-// Add Proptypes...

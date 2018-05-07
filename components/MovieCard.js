@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     width: '90%',
-    // alignSelf: 'flex-end',
   },
   release_date: {
     alignSelf: 'center',
