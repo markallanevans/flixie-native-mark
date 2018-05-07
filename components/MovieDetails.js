@@ -16,13 +16,16 @@ const styles = StyleSheet.create({
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
+    this.overview = this.props.overview;
   }
 
+
   render() {
-    console.log(this.props.item.overview);
+    const props = this.props.navigation.state.params;
+    console.log(props);
     return (
-      <View>
-        <Text style={styles.details}>{this.props.item.overview}</Text>
+      <View style={styles.details}>
+        <Text style={styles.details}>{props.overview}</Text>
       </View>
     );
   }

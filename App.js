@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, FlatList, ActivityIndicator, Text, View, ImageBackground  } from 'react-native';
-import MovieDetails from './components/MovieDetails';
 import { StackNavigator } from 'react-navigation';
+import MovieDetails from './components/MovieDetails';
 import MovieList from './components/MovieList';
 
 const Routes = StackNavigator(
@@ -13,9 +13,9 @@ const Routes = StackNavigator(
     },
     MovieDetails: { screen: MovieDetails },
   },
-  // { 
-  //     initialRouteName: 'MovieList'
-  // }
+  { 
+      initialRouteName: 'MovieList'
+  }
 );
 
 const movieDBSource = "https://api.themoviedb.org/";
@@ -48,10 +48,13 @@ export default class FetchExample extends React.Component {
       const query = newMovieCollectionRequest + this.state.page;
       const response = await fetch(query);
       const responseJson = await response.json();
+      const mSet = new Set([...this.state.movieDBList.map((m) => m.id)]);
+      const plusSet = responseJson.results.filter((m) => !mSet.has(m.id));
+      const newResults = this.state.movieDBList.concat(plusSet);
       
       this.setState({
         isLoading: false,
-        movieDBList: this.state.movieDBList.concat(responseJson.results),
+        movieDBList: newResults,
         page: this.state.page + 1
       });
     } catch(error) {

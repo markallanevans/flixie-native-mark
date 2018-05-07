@@ -59,15 +59,14 @@ class MovieCard extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
-      <TouchableHighlight onPress={() => this.props.navigation.navigate('MovieDetails')}>
+      <TouchableHighlight onPress={() => this.props.loadDetails()}>
         <View style={styles.container}>
           <Text style={styles.text} >{this.props.item.title}</Text>
           <ImageBackground style={styles.image} source={{ uri: 'https://image.tmdb.org/t/p/w500/' + this.props.item.poster_path }} >
           <Text style={styles.release_date} >{this.props.item.release_date}</Text>
           <Text style={styles.vote_average} >{this.props.item.vote_average.toFixed(1)}</Text>
-          <MovieDetails item={this.props.item}/>
+          {/* <MovieDetails overview={this.props.item.overview}/> */}
           </ImageBackground>
       </View>
      </TouchableHighlight>
