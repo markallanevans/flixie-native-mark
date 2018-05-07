@@ -4,37 +4,35 @@ import MovieDetails from './MovieDetails';
 import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
-  overview: {
-    backgroundColor: '#000',
-    color: '#fff',
-    opacity: 0.9,
-    padding: 20,
-    textAlign: 'justify',
-    justifyContent: 'flex-end',
+  listitem: {
+    backgroundColor: '#111133',
   },
   main_view: {
     flex: 1,
     paddingTop: 20,
   },
-  container: {
+  innercontainer: {
     flex: 1,
-    // justifyContent: 'center',
-    backgroundColor: '#111133'
+    backgroundColor: '#111133',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   image: {
-    alignSelf: 'center',
-    width: 300,
-    height: 400,
+    alignSelf: 'flex-start',
+    width: 120,
+    height: 200,
   },
-  text: {
+  title: {
+    flex: 1,
     fontSize: 30,
-    color: '#111133',
-    backgroundColor: '#aac',
-    textAlign: 'center',
+    color: '#fff',
+    backgroundColor: 'rgba(50,50,100,0.2)',
+    textAlign: 'left',
     marginTop: 10,
     marginBottom: 10,
     width: '90%',
-    alignSelf: 'center',
+    // alignSelf: 'flex-end',
   },
   release_date: {
     alignSelf: 'center',
@@ -50,6 +48,18 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
     color: '#fff',
     borderWidth: 1,
+  },
+  caption: {
+    flex: 2,
+    backgroundColor: '#000',
+    color: '#fff',
+    opacity: 0.9,
+    padding: 20,
+    textAlign: 'justify',
+    justifyContent: 'flex-end',
+    color: '#fff',
+    alignSelf: 'flex-end',
+    height: 200,
   }
 });
 
@@ -61,13 +71,15 @@ class MovieCard extends Component {
   render() {
     return (
       <TouchableHighlight onPress={() => this.props.loadDetails()}>
-        <View style={styles.container}>
-          <Text style={styles.text} >{this.props.item.title}</Text>
+      <View style={styles.listitem}>
+          <Text style={styles.title} >{this.props.item.title}</Text>
+        <View style={styles.innercontainer}>
           <ImageBackground style={styles.image} source={{ uri: 'https://image.tmdb.org/t/p/w500/' + this.props.item.poster_path }} >
           <Text style={styles.release_date} >{this.props.item.release_date}</Text>
           <Text style={styles.vote_average} >{this.props.item.vote_average.toFixed(1)}</Text>
-          {/* <MovieDetails overview={this.props.item.overview}/> */}
           </ImageBackground>
+          <Text style={styles.caption}>{this.props.item.overview}</Text>
+      </View>
       </View>
      </TouchableHighlight>
     );

@@ -11,7 +11,11 @@ const Routes = StackNavigator(
       title: 'Welcome to Flixie',
       } 
     },
-    MovieDetails: { screen: MovieDetails },
+    MovieDetails: { screen: MovieDetails,
+      navigationOptions: ({navigation}) => ({
+        title: `${navigation.state.params.title}`,
+      }),
+    }
   },
   { 
       initialRouteName: 'MovieList'
@@ -38,7 +42,6 @@ export default class FetchExample extends React.Component {
     this.fetchNextPage = this.fetchNextPage.bind(this);
   }
 
-
   componentDidMount(){
     this.fetchNextPage();
   }
@@ -58,10 +61,9 @@ export default class FetchExample extends React.Component {
         page: this.state.page + 1
       });
     } catch(error) {
-      console.error(error);
+      alert('Your network has more bugs than a geckos dinner!');
     }
   }
-
 
   render(){
 

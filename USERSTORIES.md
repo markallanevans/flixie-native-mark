@@ -9,10 +9,10 @@ Time spent: **X** hours spent in total
 The following **required** functionality is completed:
 
 - [√] User can view a list of movies currently playing in theaters. 
-- [ ] User can view movie details by tapping on a cell.
+- [√] User can view movie details by tapping on a cell.
 - [√] User sees loading state while waiting for the API.
-- [ ] User sees an error message when there is a network error.
-- [ ] User can pull to refresh the movie list.
+- [√] User sees an error message when there is a network error.
+- [√] User can pull to refresh the movie list.
 
 The following **optional** features are implemented:
 
