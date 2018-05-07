@@ -7,16 +7,42 @@ import SearchBar from './SearchBar';
 class MovieList extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchText: '',
+      allMovies: this.props.screenProps.movieDBList,
+      movieList: this.props.screenProps.movieDBList,
+    }
+    this.setSearchText = this.setSearchText.bind(this);
+    this.filterMovies = this.filterMovies.bind(this);
   }
+  
+  filterMovies(text) {
+      let filterText = text;
+      const allMovies = this.state.allMovies;
+      const filteredMovies = allMovies.filter(
+          m => m.title.toLowerCase().indexOf(filterText.toLowerCase()) !== -1
+    )
+    this.setState({
+      movieList: filteredMovies
+    })
+  }
+  
+  setSearchText(text) {
+    this.filterMovies(text);
+  }
+
 
   render() {
     const screenProps = this.props.screenProps;
     const navigate = this.props.navigation.navigate;
     return (
       <View>
-        <SearchBar data={screenProps.movieDBList} />
-        <FlatList
+        <SearchBar 
           data={screenProps.movieDBList}
+          setSearchText={this.setSearchText}
+        />
+        <FlatList
+          data={this.state.movieList}
           renderItem={({item}) =>
           <MovieCard 
             item={item} 

@@ -61,7 +61,7 @@ export default class FetchExample extends React.Component {
         page: this.state.page + 1
       });
     } catch(error) {
-      alert('Your network has more bugs than a geckos dinner!');
+      alert('Your network has more bugs than a geckos!');
     }
   }
 

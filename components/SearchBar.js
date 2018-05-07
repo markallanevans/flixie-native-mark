@@ -12,17 +12,10 @@ const styles = StyleSheet.create( {
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      searchText: '',
-    };
-    this.setSearchText = this.setSearchText.bind(this);
-  }
-
-  setSearchText(text) {
-    this.setState({
-      searchText: text,
-    });
-    console.log(this.state.searchText);
+    // this.state = {
+    //   searchText: '',
+    // };
+    // this.setSearchText = this.setSearchText.bind(this);
   }
 
   render() {
@@ -32,8 +25,8 @@ class SearchBar extends Component {
       <View>
        <TextInput
           style={styles.searchBar}
-          value={this.state.searchText}
-          onChangeText={(text) => this.setSearchText({text})}
+          value={this.props.searchText}
+          onChangeText={(text) => this.props.setSearchText(text)}
           placeholder="Search..." />
       </View>
     );
