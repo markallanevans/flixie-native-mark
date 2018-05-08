@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    padding: 2,
   },
   image: {
     alignSelf: 'flex-start',
@@ -60,6 +61,9 @@ const styles = StyleSheet.create({
     color: '#fff',
     alignSelf: 'flex-end',
     height: 200,
+  },
+  gridView: {
+    display: 'none',
   }
 });
 
@@ -72,13 +76,13 @@ class MovieCard extends Component {
     return (
       <TouchableHighlight onPress={() => this.props.loadDetails()}>
       <View style={styles.listitem}>
-          <Text style={styles.title} >{this.props.item.title}</Text>
+          <Text style={this.props.gridView ? styles.gridView : styles.title} >{this.props.item.title}</Text>
         <View style={styles.innercontainer}>
           <ImageBackground style={styles.image} source={{ uri: 'https://image.tmdb.org/t/p/w500/' + this.props.item.poster_path }} >
           <Text style={styles.release_date} >{this.props.item.release_date}</Text>
           <Text style={styles.vote_average} >{this.props.item.vote_average.toFixed(1)}</Text>
           </ImageBackground>
-          <Text style={styles.caption}>{this.props.item.overview}</Text>
+          <Text style={this.props.gridView ? styles.gridView : styles.caption} numberOfLines= { 10 } >{this.props.item.overview}</Text>
       </View>
       </View>
      </TouchableHighlight>
