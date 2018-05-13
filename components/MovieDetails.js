@@ -27,16 +27,9 @@ const styles = StyleSheet.create({
   }
 });
 
-class MovieDetails extends Component {
-  constructor(props) {
-    super(props);
-    this.overview = this.props.overview;
-  }
-
-
-  render() {
+const MovieDetails = () => {
     const props = this.props.navigation.state.params;
-    const img = {uri: 'https://image.tmdb.org/t/p/w500/' + props.poster_path};
+    const img = { uri: 'https://image.tmdb.org/t/p/w500/' + props.poster_path };
     return (
       <View style={styles.container}>
         <Image style={styles.image} source={img} />
@@ -50,6 +43,7 @@ class MovieDetails extends Component {
 export default MovieDetails;
 
 MovieDetails.propTypes = {
-  item: PropTypes.object,
-  overview: PropTypes.string,
-}
+  navigation: PropTypes.shape({
+    state: PropTypes.object,
+  }),
+};
