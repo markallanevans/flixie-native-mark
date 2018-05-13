@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, ImageBackground, TouchableHighlight } from 'react-native';
-import MovieDetails from './MovieDetails';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { View, Text, StyleSheet, ImageBackground, TouchableHighlight } from 'react-native';
 
 const styles = StyleSheet.create({
   listitem: {
@@ -33,7 +32,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     width: '90%',
-    // alignSelf: 'flex-end',
   },
   release_date: {
     alignSelf: 'center',
@@ -58,7 +56,6 @@ const styles = StyleSheet.create({
     padding: 20,
     textAlign: 'justify',
     justifyContent: 'flex-end',
-    color: '#fff',
     alignSelf: 'flex-end',
     height: 200,
   },
@@ -67,31 +64,36 @@ const styles = StyleSheet.create({
   }
 });
 
-class MovieCard extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <TouchableHighlight onPress={() => this.props.loadDetails()}>
-      <View style={styles.listitem}>
-          <Text style={this.props.gridView ? styles.gridView : styles.title} >{this.props.item.title}</Text>
-        <View style={styles.innercontainer}>
-          <ImageBackground style={styles.image} source={{ uri: 'https://image.tmdb.org/t/p/w500/' + this.props.item.poster_path }} >
-          <Text style={styles.release_date} >{this.props.item.release_date}</Text>
-          <Text style={styles.vote_average} >{this.props.item.vote_average.toFixed(1)}</Text>
-          </ImageBackground>
-          <Text style={this.props.gridView ? styles.gridView : styles.caption} numberOfLines= { 10 } >{this.props.item.overview}</Text>
+const MovieCard = props => (
+  <TouchableHighlight onPress={() => props.loadDetails()}>
+    <View style={styles.listitem}>
+      <Text style={props.gridView ? styles.gridView : styles.title} >{props.item.title}</Text>
+      <View style={styles.innercontainer}>
+        <ImageBackground style={styles.image} source={{ uri: 'https://image.tmdb.org/t/p/w500/' + props.item.poster_path }} >
+          <Text style={styles.release_date} >{props.item.release_date}</Text>
+          <Text style={styles.vote_average} >{props.item.vote_average.toFixed(1)}</Text>
+        </ImageBackground>
+        <Text
+          style={props.gridView ? styles.gridView : styles.caption}
+          numberOfLines={10}
+        >
+          {props.item.overview}
+        </Text>
       </View>
-      </View>
-     </TouchableHighlight>
-    );
-  }
-}
+    </View>
+  </TouchableHighlight>
+);
 
 export default MovieCard;
 
 MovieCard.propTypes = {
-  item: PropTypes.object,
-}
+  item: PropTypes.shape({
+    title: PropTypes.string,
+    poster_path: PropTypes.string,
+    overview: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.string,
+  }),
+  gridView: PropTypes.bool,
+  loadDetails: PropTypes.func,
+};

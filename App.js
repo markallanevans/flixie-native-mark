@@ -23,21 +23,21 @@ const Routes = StackNavigator(
 );
 
 const movieDBSource = "https://api.themoviedb.org/";
-const movieCollectionCall = "3/movie/popular?";
+const endpoint = "3/movie/popular?";
 const apiKey = "api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&page=";
 const pageCall = "&page=";
 
-const newMovieCollectionRequest = movieDBSource + movieCollectionCall + apiKey + pageCall;
+const newMovieCollectionRequest = movieDBSource + endpoint + apiKey + pageCall;
 
 export default class FetchExample extends React.Component {
 
   constructor(props){
     super(props);
     this.state ={ 
-    isLoading: true,
-    movieDBList: [],
-    filteredMovies: [],
-    page: 1,
+      isLoading: true,
+      movieDBList: [],
+      filteredMovies: [],
+      page: 1,
     }
 
     this.fetchNextPage = this.fetchNextPage.bind(this);
@@ -73,16 +73,16 @@ export default class FetchExample extends React.Component {
     const allMovies = this.state.movieDBList;
     const filteredMovies = allMovies.filter(
         m => m.title.toLowerCase().indexOf(filterText.toLowerCase()) !== -1
-  )
-  this.setState({
-    filteredMovies: filteredMovies,
-    searchText: text,
-  })
-}
+    )
+    this.setState({
+      filteredMovies: filteredMovies,
+      searchText: text,
+    })
+  }
 
-  render(){
+  render() {
 
-    if(this.state.isLoading){
+    if(this.state.isLoading) {
       return(
         <View style={{flex: 1, padding: 20, justifyContent: 'center'}}>
           <ActivityIndicator size="large" color="#888899"/>
