@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View, StyleSheet, TextInput } from 'react-native';
 
-const styles = StyleSheet.create( {
+const styles = StyleSheet.create({
   searchBar: {
     height: 40,
     fontSize: 20,
@@ -9,22 +10,20 @@ const styles = StyleSheet.create( {
   },
 });
 
-class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-  }
+const SearchBar = props => (
+  <View>
+    <TextInput
+      style={styles.searchBar}
+      value={props.searchText}
+      onChangeText={text => props.setSearchText(text)}
+      placeholder="Search..."
+    />
+  </View>
+);
 
-  render() {
-    return (
-      <View>
-       <TextInput
-          style={styles.searchBar}
-          value={this.props.searchText}
-          onChangeText={(text) => this.props.setSearchText(text)}
-          placeholder="Search..." />
-      </View>
-    );
-  }
-}
+SearchBar.propTypes = {
+  searchText: PropTypes.string,
+  setSearchText: PropTypes.func,
+};
 
 export default SearchBar;

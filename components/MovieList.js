@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ImageBackground, FlatList, ActivityIndicator, TouchableHighlight, Button } from 'react-native';
-import MovieDetails from './MovieDetails';
+import { View, StyleSheet, FlatList, ActivityIndicator, Button } from 'react-native';
 import MovieCard from './MovieCard';
 import SearchBar from './SearchBar';
-
 
 class MovieList extends Component {
   constructor(props) {
@@ -11,13 +9,12 @@ class MovieList extends Component {
     this.state = {
       searchText: '',
       search: false,
-      allMovies: this.props.screenProps.movieDBList,
-      movieList: this.props.screenProps.movieDBList,
       gridView: true,
-    }
+    };
+
     this.setSearchText = this.setSearchText.bind(this);
+    this.changeView = this.changeView.bind(this);
   }
-  
   
   setSearchText(text) {
     this.props.screenProps.filterMovies(text);
@@ -49,22 +46,22 @@ class MovieList extends Component {
     })
     return (
       <View>
-        <SearchBar 
+        <SearchBar
           style={styles.searchBar}
           data={screenProps.movieDBList}
           searchText={screenProps.searchText}
           setSearchText={this.setSearchText}
         />
-        <Button style={styles.button} title={buttonTxt} onPress={this.changeView.bind(this)}/>
+        <Button style={styles.button} title={buttonTxt} onPress={this.changeView} />
         <FlatList
           data={screenProps.filteredMovies}
           renderItem={({item}) =>
-          <MovieCard 
-            item={item}
-            gridView={this.state.gridView}
-            navigation={screenProps.navigation}
-            loadDetails={() => navigate('MovieDetails', item)}
-          />
+            <MovieCard 
+              item={item}
+              gridView={this.state.gridView}
+              navigation={screenProps.navigation}
+              loadDetails={() => navigate('MovieDetails', item)}
+            />
           }
           numColumns={numColums}
           keyExtractor={(item) => `${item.id}`}
