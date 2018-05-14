@@ -6,5 +6,7 @@ module.exports = {
         "prefer-template": 0,
         "comma-dangle": 0,
         "import/no-extraneous-dependencies": 0,
-    }
+        "import/no-named-as-default": 0,
+        "import/no-named-as-default-member": 0,
+    },
 };

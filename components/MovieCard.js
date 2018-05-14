@@ -92,7 +92,7 @@ MovieCard.propTypes = {
     poster_path: PropTypes.string,
     overview: PropTypes.string,
     release_date: PropTypes.string,
-    vote_average: PropTypes.string,
+    vote_average: PropTypes.number,
   }),
   gridView: PropTypes.bool,
   loadDetails: PropTypes.func,

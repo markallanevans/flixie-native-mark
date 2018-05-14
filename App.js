@@ -1,24 +1,26 @@
 import React from 'react';
-import { StyleSheet, FlatList, ActivityIndicator, Text, View, ImageBackground  } from 'react-native';
+import { StyleSheet, ActivityIndicator, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import MovieDetails from './components/MovieDetails';
 import MovieList from './components/MovieList';
 
 const Routes = StackNavigator(
   {
-    MovieList: { screen: MovieList,
-    navigationOptions: {
-      title: 'Welcome to Flixie',
-      } 
+    MovieList: {
+      screen: MovieList,
+      navigationOptions: {
+        title: 'Welcome to Flixie',
+      },
     },
-    MovieDetails: { screen: MovieDetails,
-      navigationOptions: ({navigation}) => ({
+    MovieDetails: {
+      screen: MovieDetails,
+      navigationOptions: ({ navigation }) => ({
         title: `${navigation.state.params.title}`,
       }),
     }
   },
-  { 
-      initialRouteName: 'MovieList'
+  {
+    initialRouteName: 'MovieList'
   }
 );
 
@@ -29,22 +31,30 @@ const pageCall = "&page=";
 
 const newMovieCollectionRequest = movieDBSource + endpoint + apiKey + pageCall;
 
+const styles = StyleSheet.create({
+  loaderContainer: {
+    flex: 1,
+    padding: 20,
+    justifyContent: 'center'
+  }
+});
+
 export default class FetchExample extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state ={ 
+    this.state = { 
       isLoading: true,
       movieDBList: [],
       filteredMovies: [],
       page: 1,
-    }
+    };
 
     this.fetchNextPage = this.fetchNextPage.bind(this);
     this.filterMovies = this.filterMovies.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.fetchNextPage();
   }
 
@@ -69,29 +79,28 @@ export default class FetchExample extends React.Component {
   }
 
   filterMovies(text) {
-    let filterText = text;
     const allMovies = this.state.movieDBList;
     const filteredMovies = allMovies.filter(
-        m => m.title.toLowerCase().indexOf(filterText.toLowerCase()) !== -1
-    )
+      m => m.title.toLowerCase().indexOf(text.toLowerCase()) !== -1
+    );
+
     this.setState({
       filteredMovies: filteredMovies,
       searchText: text,
-    })
+    });
   }
 
   render() {
-
-    if(this.state.isLoading) {
-      return(
-        <View style={{flex: 1, padding: 20, justifyContent: 'center'}}>
-          <ActivityIndicator size="large" color="#888899"/>
+    if (this.state.isLoading) {
+      return (
+        <View style={styles.loaderContainer}>
+          <ActivityIndicator size="large" color="#888899" />
         </View>
-      )
+      );
     }
-    
-    return(
-      <Routes 
+
+    return (
+      <Routes
         screenProps={{
           screenProps: this.state.searchText,
           movieDBList: this.state.movieDBList,
@@ -101,9 +110,8 @@ export default class FetchExample extends React.Component {
           isLoading: this.state.isLoading,
           fetchNextPage: this.fetchNextPage,
           refreshing: this.state.isLoading,
-         }} />
+         }}
+      />
     );
   }
 }
-
-
