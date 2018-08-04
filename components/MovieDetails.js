@@ -1,47 +1,33 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import React, { PureComponent } from 'react';
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+} from 'react-native';
 import PropTypes from 'prop-types';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#111133'
-  },
-  details: {
-    backgroundColor: '#000',
-    color: '#fff',
-    opacity: 0.9,
-    padding: 20,
-    textAlign: 'justify',
-  },
-  title: {
-    fontWeight: 'bold',
-    color: '#fff',
-    padding: 10,
-  },
-  image: {
-    height: 400,
-    width: 250,
-  }
-});
+import styles from '../Styles/MovieDetailsStyles';
 
-class MovieDetails extends Component {
-  constructor(props) {
-    super(props);
-    this.overview = this.props.overview;
-  }
-
-
+class MovieDetails extends PureComponent {
   render() {
-    const props = this.props.navigation.state.params;
-    const img = {uri: 'https://image.tmdb.org/t/p/w500/' + props.poster_path};
+    const { navigation } = this.props;
+    const { params } = navigation.state;
+    const img = { uri: `https://image.tmdb.org/t/p/w500/${params.poster_path}` };
     return (
       <View style={styles.container}>
         <Image style={styles.image} source={img} />
-        <Text style={styles.title}>{props.title}</Text>
-        <Text style={styles.details}>{props.overview}</Text>
+        <ScrollView
+          style={styles.details}
+          alwaysBounceVertical={false}
+        >
+          <Text style={styles.title}>
+            {params.title}
+          </Text>
+          <Text style={styles.overview}>
+            {params.overview}
+          </Text>
+        </ScrollView>
       </View>
     );
   }
@@ -50,6 +36,5 @@ class MovieDetails extends Component {
 export default MovieDetails;
 
 MovieDetails.propTypes = {
-  item: PropTypes.object,
-  overview: PropTypes.string,
-}
+  navigation: PropTypes.object.isRequired,
+};

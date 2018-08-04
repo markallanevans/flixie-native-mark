@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ImageBackground, FlatList, ActivityIndicator, TouchableHighlight, Button } from 'react-native';
-import MovieDetails from './MovieDetails';
+import {
+  View,
+  FlatList,
+  StatusBar,
+  SafeAreaView,
+  ActivityIndicator,
+  TouchableOpacity,
+} from 'react-native';
+import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import MovieCard from './MovieCard';
 import SearchBar from './SearchBar';
 
+import { Colors } from '../Themes';
+import styles from '../Styles/MovieListStyles';
+
+const gridIcon = (<Icon name="grid-on" size={30} color={Colors.listGridIconColor} />);
+const listIcon = (<Icon name="view-list" size={30} color={Colors.listGridIconColor} />);
 
 class MovieList extends Component {
   constructor(props) {
@@ -11,76 +24,87 @@ class MovieList extends Component {
     this.state = {
       searchText: '',
       search: false,
-      allMovies: this.props.screenProps.movieDBList,
-      movieList: this.props.screenProps.movieDBList,
       gridView: true,
-    }
+    };
     this.setSearchText = this.setSearchText.bind(this);
+    this.changeView = this.changeView.bind(this);
   }
-  
-  
+
   setSearchText(text) {
-    this.props.screenProps.filterMovies(text);
+    const { screenProps } = this.props;
+    screenProps.filterMovies(text);
     this.setState({
       searchText: text,
-      search: text.length > 0 ? true : false,
+      search: text.length > 0,
     });
   }
 
   changeView() {
+    const { gridView } = this.state;
     this.setState({
-      gridView: !this.state.gridView
+      gridView: !gridView,
     });
   }
-  
-  
+
   render() {
-    const numColums = this.state.gridView ? 3 : 1;
-    const screenProps = this.props.screenProps;
-    const navigate = this.props.navigation.navigate;
-    const buttonTxt = this.state.gridView ? 'Show List' : 'Show Grid';
-    const styles = StyleSheet.create({
-      searchBar: {
-        flex: 9,
-      },
-      button: {
-        flex: 1,
-      }
-    })
+    const { gridView, search, searchText } = this.state;
+    const { screenProps, navigation } = this.props;
+    const { navigate } = navigation;
+    const numColums = gridView ? 4 : 1;
+    const buttonTxt = gridView ? listIcon : gridIcon;
+
     return (
-      <View>
-        <SearchBar 
-          style={styles.searchBar}
-          data={screenProps.movieDBList}
-          searchText={screenProps.searchText}
-          setSearchText={this.setSearchText}
-        />
-        <Button style={styles.button} title={buttonTxt} onPress={this.changeView.bind(this)}/>
-        <FlatList
-          data={screenProps.filteredMovies}
-          renderItem={({item}) =>
-          <MovieCard 
-            item={item}
-            gridView={this.state.gridView}
-            navigation={screenProps.navigation}
-            loadDetails={() => navigate('MovieDetails', item)}
+      <SafeAreaView style={styles.mainContainer}>
+        <StatusBar barStyle="light-content" />
+        <View>
+          <View style={styles.navBar}>
+            <SearchBar
+              data={screenProps.movieDBList}
+              searchText={screenProps.searchText}
+              setSearchText={this.setSearchText}
+            />
+            <View style={styles.navBarRight}>
+              <TouchableOpacity
+                style={styles.gridToggleButton}
+                onPress={this.changeView}
+              >
+                {buttonTxt}
+              </TouchableOpacity>
+            </View>
+          </View>
+          <FlatList
+            data={screenProps.filteredMovies}
+            renderItem={({ item }) => (
+              <MovieCard
+                item={item}
+                gridView={gridView}
+                navigation={screenProps.navigation}
+                loadDetails={() => navigate('MovieDetails', item)}
+              />)
+            }
+            numColumns={numColums}
+            keyExtractor={item => `${item.id}`}
+            key={gridView ? 1 : 0}
+            refreshing={screenProps.isLoading}
+            onRefresh={screenProps.fetchNextPage}
+            onEndReachedThreshold={0.05}
+            onEndReached={!search && screenProps.fetchNextPage}
+            ListFooterComponent={() => searchText === ''
+              && (
+              <View>
+                <ActivityIndicator size="large" />
+              </View>
+              )}
           />
-          }
-          numColumns={numColums}
-          keyExtractor={(item) => `${item.id}`}
-          key= { (this.state.gridView) ? 1 : 0}
-          refreshing={screenProps.isLoading}
-          onRefresh={screenProps.fetchNextPage}
-          onEndReachedThreshold={0.05}
-          onEndReached={!this.state.search && screenProps.fetchNextPage}
-          ListFooterComponent={() => this.state.searchText === '' && 
-            <View>
-              <ActivityIndicator size="large" />
-            </View>}
-        />
-      </View>
+        </View>
+      </SafeAreaView>
     );
   }
 }
+
+MovieList.propTypes = {
+  screenProps: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
+};
 
 export default MovieList;

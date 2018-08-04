@@ -1,30 +1,28 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import React, { PureComponent } from 'react';
+import { View, TextInput } from 'react-native';
+import PropTypes from 'prop-types';
+import { Colors } from '../Themes';
+import styles from '../Styles/SearchBarStyles';
 
-const styles = StyleSheet.create( {
-  searchBar: {
-    height: 40,
-    fontSize: 20,
-    padding: 10,
-  },
-});
-
-class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+class SearchBar extends PureComponent {
   render() {
+    const { setSearchText } = this.props;
     return (
-      <View>
-       <TextInput
-          style={styles.searchBar}
-          value={this.props.searchText}
-          onChangeText={(text) => this.props.setSearchText(text)}
-          placeholder="Search..." />
+      <View style={styles.searchBar}>
+        <TextInput
+          style={styles.searchBarText}
+          autoCapitalize="none"
+          placeholderTextColor={Colors.searchBarBackgroundColor}
+          onChangeText={text => setSearchText(text)}
+          placeholder="Search..."
+        />
       </View>
     );
   }
 }
+
+SearchBar.propTypes = {
+  setSearchText: PropTypes.func.isRequired,
+};
 
 export default SearchBar;

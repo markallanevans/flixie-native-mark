@@ -17,7 +17,7 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [ ] Add a tab bar for **Now Playing** and **Top Rated** movies.
-- [ ] Implement control to switch between list view and grid view.
+- [√] Implement control to switch between list view and grid view.
 - [√] Add a search bar.
 - [ ] Customize the highlight and selection effect of the cell.
 - [ ] Customize the navigation bar.

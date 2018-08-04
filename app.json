@@ -1,5 +1,8 @@
 {
   "expo": {
+    "name": "Flixie Native",
+    "slug": "flixie-native-app",
+    "description": "A Movie Database Search App",
     "sdkVersion": "27.0.0"
   }
 }
