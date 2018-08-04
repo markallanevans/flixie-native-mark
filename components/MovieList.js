@@ -73,6 +73,7 @@ class MovieList extends Component {
             </View>
           </View>
           <FlatList
+            style={styles.list}
             data={screenProps.filteredMovies}
             renderItem={({ item }) => (
               <MovieCard

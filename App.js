@@ -67,24 +67,20 @@ export default class FetchExample extends React.Component {
   }
 
   async fetchNextPage() {
-    try {
-      const { page, movieDBList } = this.state;
-      const query = newMovieCollectionRequest + page;
-      const response = await fetch(query);
-      const responseJson = await response.json();
-      const mSet = new Set([...movieDBList.map(m => m.id)]);
-      const plusSet = responseJson.results.filter(m => !mSet.has(m.id));
-      const newResults = movieDBList.concat(plusSet);
+    const { page, movieDBList } = this.state;
+    const query = newMovieCollectionRequest + page;
+    const response = await fetch(query);
+    const responseJson = await response.json();
+    const mSet = new Set([...movieDBList.map(m => m.id)]);
+    const plusSet = responseJson.results.filter(m => !mSet.has(m.id));
+    const newResults = movieDBList.concat(plusSet);
 
-      this.setState({
-        isLoading: false,
-        movieDBList: newResults,
-        filteredMovies: newResults,
-        page: page + 1,
-      });
-    } catch (error) {
-      alert('Your network has more bugs than a gecko\'s lunch!');
-    }
+    this.setState({
+      isLoading: false,
+      movieDBList: newResults,
+      filteredMovies: newResults,
+      page: page + 1,
+    });
   }
 
   filterMovies(text) {

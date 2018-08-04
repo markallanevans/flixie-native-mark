@@ -4,6 +4,7 @@ import { Colors } from '../Themes';
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    backgroundColor: Colors.transparent,
   },
   navBar: {
     flexDirection: 'row',
@@ -16,6 +17,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  list: {
+    backgroundColor: Colors.transparent,
   },
 });
 

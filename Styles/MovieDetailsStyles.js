@@ -1,39 +1,43 @@
 import { StyleSheet } from 'react-native';
+import { Colors, Metrics } from '../Themes';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    backgroundColor: '#111133',
+    backgroundColor: Colors.movieDetailsBackgroundColor,
   },
   details: {
     position: 'absolute',
     bottom: 0,
-    height: 100,
-    backgroundColor: '#000',
-    opacity: 0.9,
+    height: Metrics.sectionLarge,
+    backgroundColor: Colors.primaryBackgroundTransparent,
   },
   overview: {
-    marginBottom: 20,
-    paddingHorizontal: 10,
-    color: '#fff',
+    marginBottom: Metrics.marginVertical * 2,
+    padding: Metrics.baseMargin * 2,
+    color: Colors.primaryWhite,
     textAlign: 'justify',
   },
   title: {
     fontWeight: 'bold',
-    marginVertical: 20,
-    color: '#fff',
+    marginVertical: Metrics.marginVertical,
+    color: Colors.primaryWhite,
     textAlign: 'center',
   },
   image: {
     position: 'absolute',
-    marginLeft: 10,
-    marginRight: 10,
+    marginLeft: Metrics.baseMargin,
+    marginRight: Metrics.baseMargin,
     top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
+    right: 20,
+    bottom: 120,
+    left: 20,
+  },
+  detailBars: {
+    alignSelf: 'flex-start',
+    marginLeft: 27,
   },
 });
 
