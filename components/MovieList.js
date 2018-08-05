@@ -52,7 +52,6 @@ class MovieList extends Component {
     const { navigate } = navigation;
     const numColums = gridView ? 4 : 1;
     const buttonTxt = gridView ? listIcon : gridIcon;
-
     return (
       <SafeAreaView style={styles.mainContainer}>
         <StatusBar barStyle="light-content" />

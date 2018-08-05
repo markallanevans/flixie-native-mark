@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Metrics, Colors } from '../Themes';
+import { Metrics, Colors, Fonts } from '../Themes';
 
 const styles = StyleSheet.create({
   detailBar: {
@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
     height: 30,
   },
   detailBarText: {
-    color: '#fff',
+    ...Fonts.style.h6,
+    color: Colors.primaryWhite,
   },
 });
 

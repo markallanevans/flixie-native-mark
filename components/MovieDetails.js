@@ -38,8 +38,11 @@ class MovieDetails extends PureComponent {
           style={styles.details}
           alwaysBounceVertical={false}
         >
-          <Text style={styles.overview}>
-            {params.overview}
+          <Text style={styles.title}>
+            { params.title }
+          </Text>
+          <Text style={styles.description}>
+            { params.overview }
           </Text>
         </ScrollView>
       </View>

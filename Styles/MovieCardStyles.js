@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Colors, Metrics } from '../Themes';
+import { Colors, Metrics, Fonts } from '../Themes';
 
 const styles = StyleSheet.create({
   listitem: {
@@ -29,7 +29,9 @@ const styles = StyleSheet.create({
   },
   title: {
     flex: 1,
-    fontSize: 30,
+    ...Fonts.style.h4,
+    marginLeft: Metrics.marginHorizontal,
+    paddingLeft: Metrics.marginHorizontal,
     color: Colors.primaryWhite,
     backgroundColor: Colors.titleBackgroundColor,
     textAlign: 'left',
@@ -51,16 +53,19 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   vote_average_content: {
+    ...Fonts.style.description,
     color: Colors.primaryWhite,
   },
   caption: {
+    ...Fonts.style.description,
     flex: 2,
     backgroundColor: Colors.primaryBlack,
     color: Colors.primaryWhite,
     opacity: 0.9,
-    padding: Metrics.baseMargin * 2,
+    padding: Fonts.style.description.fontSize * 2,
     textAlign: 'justify',
     justifyContent: 'flex-end',
+    alignItems: 'center',
     alignSelf: 'center',
     height: Metrics.image.height * 0.9,
   },

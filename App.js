@@ -1,9 +1,9 @@
 import React from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, View, Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import MovieDetails from './components/MovieDetails';
 import MovieList from './components/MovieList';
-import { Colors } from './Themes/index';
+import { Colors, Fonts, Metrics } from './Themes/index';
 import styles from './Styles/MainAppStyles';
 
 const Routes = createStackNavigator(
@@ -16,6 +16,13 @@ const Routes = createStackNavigator(
           backgroundColor: Colors.headerBackgroundColor,
           borderBottomColor: Colors.headerFontColor,
           borderBottomWidth: 0,
+        },
+        headerTitleStyle: {
+          ...Fonts.style.h4,
+          backgroundColor: Colors.transparentBlack,
+          width: Metrics.screenWidth,
+          marginLeft: Platform.OS !== 'ios' ? 0 : null,
+          textAlign: 'center',
         },
         headerTintColor: Colors.headerFontColor,
       },
@@ -42,7 +49,9 @@ const Routes = createStackNavigator(
 );
 
 const movieDBSource = 'https://api.themoviedb.org/';
-const movieCollectionCall = '3/movie/popular?';
+const movies = '3/movie/';
+const type = 'popular?';
+const movieCollectionCall = movies + type;
 const apiKey = 'api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&page=';
 const pageCall = '&page=';
 

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Colors, Metrics } from '../Themes';
+import { Colors, Metrics, Fonts } from '../Themes';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,17 +11,19 @@ const styles = StyleSheet.create({
   details: {
     position: 'absolute',
     bottom: 0,
-    height: Metrics.sectionLarge,
+    top: Metrics.screenHeight - (Metrics.screenHeight / 4),
     backgroundColor: Colors.primaryBackgroundTransparent,
   },
-  overview: {
-    marginBottom: Metrics.marginVertical * 2,
-    padding: Metrics.baseMargin * 2,
+  description: {
+    ...Fonts.style.description,
     color: Colors.primaryWhite,
+    marginBottom: Metrics.marginVertical * 2,
+    paddingHorizontal: Metrics.baseMargin * 2,
+    paddingVertical: Metrics.baseMargin,
     textAlign: 'justify',
   },
   title: {
-    fontWeight: 'bold',
+    ...Fonts.style.h4,
     marginVertical: Metrics.marginVertical,
     color: Colors.primaryWhite,
     textAlign: 'center',

@@ -23,7 +23,10 @@ const MovieCard = ({ gridView, item, loadDetails }) => (
             </Text>
           </View>
         </ImageBackground>
-        <Text style={gridView ? styles.gridView : styles.caption} numberOfLines={10}>
+        <Text
+          style={gridView ? styles.gridView : styles.caption}
+          numberOfLines={3}
+        >
           {item.overview}
         </Text>
       </View>

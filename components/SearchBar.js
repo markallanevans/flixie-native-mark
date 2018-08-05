@@ -12,6 +12,7 @@ class SearchBar extends PureComponent {
         <TextInput
           style={styles.searchBarText}
           autoCapitalize="none"
+          underlineColorAndroid="transparent"
           placeholderTextColor={Colors.searchBarBackgroundColor}
           onChangeText={text => setSearchText(text)}
           placeholder="Search..."

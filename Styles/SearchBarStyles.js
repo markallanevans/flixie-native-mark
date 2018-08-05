@@ -1,16 +1,16 @@
 import { StyleSheet } from 'react-native';
-import { Colors } from '../Themes';
+import { Colors, Fonts } from '../Themes';
 
 const styles = StyleSheet.create({
   searchBar: {
     flex: 7,
   },
   searchBarText: {
+    ...Fonts.style.h6,
     backgroundColor: Colors.searchBarBackgroundColor,
     color: Colors.searchBarFontColor,
-    height: 40,
-    fontSize: 20,
-    padding: 10,
+    height: Fonts.size.h6 * 2.5,
+    padding: Fonts.size.h6 / 2,
   },
 });
 
