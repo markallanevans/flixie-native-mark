@@ -1,4 +1,4 @@
-# Project 1 - *Flixie*
+# Project 1 - _Flixie_
 
 **Flixie** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
@@ -8,7 +8,7 @@ Time spent: **6** hours spent in total
 
 The following **required** functionality is completed:
 
-- [√] User can view a list of movies currently playing in theaters. 
+- [√] User can view a list of movies currently playing in theaters.
 - [√] User can view movie details by tapping on a cell.
 - [√] User sees loading state while waiting for the API.
 - [√] User sees an error message when there is a network error.
@@ -22,17 +22,15 @@ The following **optional** features are implemented:
 - [ ] Customize the highlight and selection effect of the cell.
 - [ ] Customize the navigation bar.
 
-The following **additional** features are implemented:
+The following **additional** will be implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [ ] Add Tabs at the top of the ListView Screen!
+- [ ] Search Feature should search new movies not filter existing results!
+- [ ] Animated for a better UX!
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
-
-<img src='https://media.giphy.com/media/C8YUQfDLcG1908Ypj7/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [Giphy](https://giphy.com/).
+Not created yet.
 
 ## Notes
 

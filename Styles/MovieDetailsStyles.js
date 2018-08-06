@@ -1,18 +1,18 @@
-import { StyleSheet } from 'react-native';
-import { Colors, Metrics, Fonts } from '../Themes';
+import { StyleSheet } from 'react-native'
+import { Colors, Metrics, Fonts } from '../Themes'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    backgroundColor: Colors.movieDetailsBackgroundColor,
+    backgroundColor: Colors.movieDetailsBackgroundColor
   },
   details: {
     position: 'absolute',
     bottom: 0,
-    top: Metrics.screenHeight - (Metrics.screenHeight / 4),
-    backgroundColor: Colors.primaryBackgroundTransparent,
+    top: Metrics.screenHeight - Metrics.screenHeight / 4,
+    backgroundColor: Colors.primaryBackgroundTransparent
   },
   description: {
     ...Fonts.style.description,
@@ -20,13 +20,13 @@ const styles = StyleSheet.create({
     marginBottom: Metrics.marginVertical * 2,
     paddingHorizontal: Metrics.baseMargin * 2,
     paddingVertical: Metrics.baseMargin,
-    textAlign: 'justify',
+    textAlign: 'justify'
   },
   title: {
     ...Fonts.style.h4,
     marginVertical: Metrics.marginVertical,
     color: Colors.primaryWhite,
-    textAlign: 'center',
+    textAlign: 'center'
   },
   image: {
     position: 'absolute',
@@ -35,12 +35,12 @@ const styles = StyleSheet.create({
     top: 0,
     right: 20,
     bottom: 120,
-    left: 20,
+    left: 20
   },
   detailBars: {
     alignSelf: 'flex-start',
-    marginLeft: 27,
-  },
-});
+    marginLeft: 27
+  }
+})
 
-export default styles;
+export default styles

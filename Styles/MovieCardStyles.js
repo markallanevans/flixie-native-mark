@@ -1,10 +1,10 @@
-import { StyleSheet } from 'react-native';
-import { Colors, Metrics, Fonts } from '../Themes';
+import { StyleSheet } from 'react-native'
+import { Colors, Metrics, Fonts } from '../Themes'
 
 const styles = StyleSheet.create({
   listitem: {
     backgroundColor: Colors.primaryBackgroundColor,
-    flex: 1,
+    flex: 1
   },
   innercontainerGrid: {
     flex: 1,
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: Metrics.gridGap,
+    padding: Metrics.gridGap
   },
   innercontainerList: {
     flex: 1,
@@ -21,12 +21,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginHorizontal: Metrics.marginHorizontal,
-    padding: 2,
+    padding: 2
   },
   image: {
     alignSelf: 'flex-start',
     width: Metrics.image.width,
-    height: Metrics.image.height,
+    height: Metrics.image.height
   },
   title: {
     flex: 1,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.titleBackgroundColor,
     textAlign: 'left',
     marginVertical: Metrics.baseMargin,
-    width: '90%',
+    width: '90%'
   },
   vote_average_container: {
     alignSelf: 'flex-end',
@@ -51,11 +51,11 @@ const styles = StyleSheet.create({
     borderRadius: Metrics.vote.diameter,
     opacity: 0.9,
     borderColor: Colors.primaryWhite,
-    borderWidth: 1,
+    borderWidth: 1
   },
   vote_average_content: {
     ...Fonts.style.description,
-    color: Colors.primaryWhite,
+    color: Colors.primaryWhite
   },
   caption: {
     ...Fonts.style.description,
@@ -68,11 +68,11 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     alignSelf: 'center',
-    height: Metrics.image.height * 0.9,
+    height: Metrics.image.height * 0.9
   },
   gridView: {
-    display: 'none',
-  },
-});
+    display: 'none'
+  }
+})
 
-export default styles;
+export default styles

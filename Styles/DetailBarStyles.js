@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { Metrics, Colors, Fonts } from '../Themes';
+import { StyleSheet } from 'react-native'
+import { Metrics, Colors, Fonts } from '../Themes'
 
 const styles = StyleSheet.create({
   detailBar: {
@@ -13,12 +13,12 @@ const styles = StyleSheet.create({
     paddingLeft: Metrics.marginVertical,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    height: 30,
+    height: 30
   },
   detailBarText: {
     ...Fonts.style.h6,
-    color: Colors.primaryWhite,
-  },
-});
+    color: Colors.primaryWhite
+  }
+})
 
-export default styles;
+export default styles
