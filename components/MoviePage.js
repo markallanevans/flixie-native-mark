@@ -1,15 +1,7 @@
 import React, { Component } from 'react'
-import {
-  View,
-  FlatList,
-  StatusBar,
-  SafeAreaView,
-  ActivityIndicator,
-  TouchableOpacity
-} from 'react-native'
+import { View, StatusBar, SafeAreaView, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import MovieCard from './MovieCard'
 import MovieList from './MovieList'
 import SearchBar from './SearchBar'
 
@@ -52,9 +44,8 @@ class MoviePage extends Component {
   }
 
   render() {
-    const { gridView, search, searchText } = this.state
+    const { gridView } = this.state
     const { screenProps, navigation } = this.props
-    const { navigate } = navigation
     const numColums = gridView ? 4 : 1
     const buttonTxt = gridView ? listIcon : gridIcon
     return (

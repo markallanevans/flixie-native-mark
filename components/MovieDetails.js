@@ -36,12 +36,12 @@ class MovieDetails extends PureComponent {
     ))
     return (
       <View style={styles.container}>
-        <Image style={styles.image} source={img} />{' '}
-        <View style={styles.detailBars}> {details} </View>{' '}
+        <Image style={styles.image} source={img} />
+        <View style={styles.detailBars}>{details}</View>
         <ScrollView style={styles.details} alwaysBounceVertical={false}>
-          <Text style={styles.title}> {params.title} </Text>{' '}
-          <Text style={styles.description}> {params.overview} </Text>{' '}
-        </ScrollView>{' '}
+          <Text style={styles.title}> {params.title} </Text>
+          <Text style={styles.description}> {params.overview} </Text>
+        </ScrollView>
       </View>
     )
   }

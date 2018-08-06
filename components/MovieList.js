@@ -43,11 +43,7 @@ class MovieList extends Component {
           onEndReachedThreshold={0.05}
           onEndReached={() => !search && nextPage(searchString)}
           ListFooterComponent={() =>
-            searchText === '' && (
-              <View>
-                <ActivityIndicator size="large" />
-              </View>
-            )
+            searchText === '' && <ActivityIndicator size="large" />
           }
         />
       </View>
