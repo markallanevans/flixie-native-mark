@@ -11,12 +11,13 @@ const colors = {
   transparentBlack: 'rgba(0,0,0,0.8)',
   headerTintColor: '#111133',
   headerFontColor: 'rgba(255,255,255,0.8)',
-  searchBarBackgroundColor: 'rgba(20,62,169,0.2)',
-  searchBarFontColor: 'rgba(20,62,169,0.6)',
+  searchBarBackgroundColor: 'rgba(255,255,255,0.1)',
+  searchBarFontColor: 'rgba(255,255,255,0.9)',
+  searchBarPlaceholderColor: 'rgba(255,255,255,0.4)',
   listGridIconColor: 'rgba(255,255,255,1)',
-  listGridIconBackgroundColor: 'rgba(20,62,169,0.6)',
+  listGridIconBackgroundColor: 'rgba(255,255,255,0.2)',
   movieDetailsBackgroundColor: '#111133',
-  titleBackgroundColor: 'rgba(50,50,100,0.2)',
-};
+  titleBackgroundColor: 'rgba(50,50,100,0.2)'
+}
 
-export default colors;
+export default colors

@@ -81,6 +81,7 @@ class MoviePage extends Component {
             title={screenProps.popular.title}
             gridView={gridView}
             navigation={navigation}
+            search={this.state.search}
             nextPage={category => screenProps.fetchNextPage(category)}
           />
           <MovieList
@@ -89,6 +90,7 @@ class MoviePage extends Component {
             title={screenProps.now_playing.title}
             gridView={gridView}
             navigation={navigation}
+            search={this.state.search}
             nextPage={category => screenProps.fetchNextPage(category)}
           />
           <MovieList
@@ -97,6 +99,7 @@ class MoviePage extends Component {
             title={screenProps.top_rated.title}
             gridView={gridView}
             navigation={navigation}
+            search={this.state.search}
             nextPage={category => screenProps.fetchNextPage(category)}
           />
         </View>

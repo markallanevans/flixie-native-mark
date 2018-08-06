@@ -14,6 +14,7 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       isLoading: true,
+      categories: ['popular', 'top_rated', 'now_playing'],
       popular: {
         searchString: 'popular',
         title: 'Popular',
@@ -36,8 +37,7 @@ export default class App extends React.Component {
         page: 1
       }
     }
-
-    // this.fetchNextPage = this.fetchNextPage.bind(this)
+    this.fetchNextPage = this.fetchNextPage.bind(this)
     this.filterMovies = this.filterMovies.bind(this)
   }
 
@@ -71,14 +71,23 @@ export default class App extends React.Component {
 
   filterMovies(text) {
     const filterText = text
-    const { movieDBList } = this.state
-    const allMovies = movieDBList
-    const filteredMovies = allMovies.filter(
-      m => m.title.toLowerCase().indexOf(filterText.toLowerCase()) !== -1
-    )
-    this.setState({
-      filteredMovies,
-      searchText: text
+    const { categories } = this.state
+    categories.forEach(c => {
+      const { movieDBList, page, searchString, title } = this.state[c]
+      const allMovies = movieDBList
+      const filteredMovies = allMovies.filter(
+        m => m.title.toLowerCase().indexOf(filterText.toLowerCase()) !== -1
+      )
+      this.setState({
+        [c]: {
+          filteredMovies,
+          searchString,
+          movieDBList,
+          title,
+          searchText: text,
+          page
+        }
+      })
     })
   }
 

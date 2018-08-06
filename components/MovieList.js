@@ -1,19 +1,9 @@
 import React, { Component } from 'react'
-import {
-  View,
-  Text,
-  FlatList,
-  StatusBar,
-  SafeAreaView,
-  ActivityIndicator,
-  TouchableOpacity
-} from 'react-native'
+import { View, Text, FlatList, ActivityIndicator } from 'react-native'
 import PropTypes from 'prop-types'
-import Icon from 'react-native-vector-icons/MaterialIcons'
 import MovieCard from './MovieCard'
-import SearchBar from './SearchBar'
 
-import { Colors, Metrics } from '../Themes'
+import { Metrics } from '../Themes'
 import styles from '../Styles/MoviePageStyles'
 
 class MovieList extends Component {
@@ -63,6 +53,17 @@ class MovieList extends Component {
       </View>
     )
   }
+}
+
+MovieList.propTypes = {
+  data: PropTypes.array.isRequired,
+  navigation: PropTypes.object.isRequired,
+  gridView: PropTypes.bool.isRequired,
+  search: PropTypes.bool.isRequired,
+  searchString: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  searchText: PropTypes.string,
+  nextPage: PropTypes.func.isRequired
 }
 
 export default MovieList
