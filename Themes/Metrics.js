@@ -1,15 +1,15 @@
-import { Dimensions, Platform } from 'react-native';
+import { Dimensions, Platform } from 'react-native'
 
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window')
 
-const screenWidth = width < height ? width : height;
-const screenHeight = width < height ? height : width;
-const gap = 2;
-const imageWidth = (screenWidth / 4) - (gap * 2);
-const imageHeight = imageWidth * (120 / 90);
+const screenWidth = width < height ? width : height
+const screenHeight = width < height ? height : width
+const gap = 2
+const imageWidth = screenWidth / 4 - gap * 2
+const imageHeight = imageWidth * (120 / 90)
 
 const metrics = {
-  navBarHeight: (Platform.OS === 'ios') ? 64 : 54,
+  navBarHeight: Platform.OS === 'ios' ? 64 : 54,
   screenWidth,
   screenHeight,
   sectionLarge: 120,
@@ -21,12 +21,12 @@ const metrics = {
   line: 1,
   image: {
     width: imageWidth,
-    height: imageHeight,
+    height: imageHeight
   },
   vote: {
     diameter: 30,
-    margin: 5,
-  },
-};
+    margin: 5
+  }
+}
 
-export default metrics;
+export default metrics

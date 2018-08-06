@@ -1,5 +1,5 @@
 {
-    "extends": "airbnb",
+    "extends": ["airbnb-base", "plugin:prettier/recommended", "prettier", "prettier/flowtype", "prettier/react", "prettier/standar"],
     "parserOptions": {
         "ecmaVersion": 8,
         "sourceType": "module",
@@ -9,9 +9,18 @@
     },
     "globals": {
         "fetch": false
-      },
+    },
+    "plugins": [
+        "react",
+        "react-native",
+        "flowtype",
+        "prettier",
+        "standard"
+    ],
     "rules": {
-        "react/jsx-filename-extension": [1, {"extensions": [".js"]}],
+        "react/jsx-filename-extension": [1, {
+            "extensions": [".js"]
+        }],
         "react/forbid-prop-types": 0
     }
 }

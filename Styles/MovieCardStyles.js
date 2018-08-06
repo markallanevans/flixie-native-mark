@@ -4,6 +4,7 @@ import { Colors, Metrics, Fonts } from '../Themes';
 const styles = StyleSheet.create({
   listitem: {
     backgroundColor: Colors.primaryBackgroundColor,
+    flex: 1,
   },
   innercontainerGrid: {
     flex: 1,
