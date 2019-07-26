@@ -3,6 +3,6 @@
     "name": "Flixie Native",
     "slug": "flixie-native-app",
     "description": "A Movie Database Search App for CoderSchool's React Native Course",
-    "sdkVersion": "27.0.0"
+    "sdkVersion": "33.0.0"
   }
 }
