@@ -46,8 +46,10 @@ class MoviePage extends Component {
   render() {
     const { gridView } = this.state
     const { screenProps, navigation } = this.props
-    const numColums = gridView ? 4 : 1
     const buttonTxt = gridView ? listIcon : gridIcon
+    const { popular, now_playing, top_rated, fetchNextPage } = screenProps
+    const categories = [popular, now_playing, top_rated]
+
     return (
       <SafeAreaView style={styles.mainContainer}>
         <StatusBar barStyle="light-content" />
@@ -66,33 +68,18 @@ class MoviePage extends Component {
               </TouchableOpacity>
             </View>
           </View>
-          <MovieList
-            data={screenProps.popular.filteredMovies}
-            searchString={screenProps.popular.searchString}
-            title={screenProps.popular.title}
-            gridView={gridView}
-            navigation={navigation}
-            search={this.state.search}
-            nextPage={category => screenProps.fetchNextPage(category)}
-          />
-          <MovieList
-            data={screenProps.now_playing.filteredMovies}
-            searchString={screenProps.now_playing.searchString}
-            title={screenProps.now_playing.title}
-            gridView={gridView}
-            navigation={navigation}
-            search={this.state.search}
-            nextPage={category => screenProps.fetchNextPage(category)}
-          />
-          <MovieList
-            data={screenProps.top_rated.filteredMovies}
-            searchString={screenProps.top_rated.searchString}
-            title={screenProps.top_rated.title}
-            gridView={gridView}
-            navigation={navigation}
-            search={this.state.search}
-            nextPage={category => screenProps.fetchNextPage(category)}
-          />
+          {categories.map(category => (
+            <MovieList
+              key={category.title}
+              data={category.filteredMovies}
+              searchString={category.searchString}
+              title={category.title}
+              gridView={gridView}
+              navigation={navigation}
+              search={this.state.search}
+              nextPage={c => fetchNextPage(c)}
+            />
+          ))}
         </View>
       </SafeAreaView>
     )
